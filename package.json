@@ -1,6 +1,6 @@
 {
   "name": "cli-view-utils",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A few helper functions for node cli apps that ask people to choose stuff from lists",
   "main": "index.js",
   "repository": "Leimi/cli-view-utils",
