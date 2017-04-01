@@ -1,5 +1,6 @@
 var chalk = require('chalk');
 var inquirer = require('inquirer');
+var cliTable = require('cli-table');
 var Q = require('q');
 
 module.exports = {};
@@ -28,6 +29,19 @@ module.exports.renderList = function renderList(data, itemRenderCallback) {
         }).join('\n')
     );
     return data;
+};
+
+module.exports.renderTable = function renderTable(data, tableOptions, itemDataCallback) {
+    if (!tableOptions) {
+        tableOptions = {head: []};
+    }
+    tableOptions.head.unshift('Number');
+
+    var table = new cliTable(tableOptions);
+    data.forEach(function(item, n) {
+        table.push([lineNumber(n+1)].concat(itemDataCallback(item)));
+    });
+    console.log(table.toString());
 };
 
 module.exports.selectItem = function selectItem(list, message) {
